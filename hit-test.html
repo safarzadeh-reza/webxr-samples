@@ -134,10 +134,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         // hitTestSource that tracks it.
         session.requestReferenceSpace('viewer').then((refSpace) => {
           xrViewerSpace = refSpace;
-          console.log("xrViewerSpace",xrViewerSpace)
           session.requestHitTestSource({ space: xrViewerSpace }).then((hitTestSource) => {
             xrHitTestSource = hitTestSource;
-            console.log("xrHitTestSource",xrHitTestSource)
           });
         });
 
@@ -198,9 +196,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         // If we have a hit test source, get its results for the frame
         // and use the pose to display a reticle in the scene.
         if (xrHitTestSource && pose) {
+          console.log("pose",pose);
           let hitTestResults = frame.getHitTestResults(xrHitTestSource);
           if (hitTestResults.length > 0) {
             let pose = hitTestResults[0].getPose(xrRefSpace);
+            console.log("pose_2",pose)
             reticle.visible = true;
             reticle.matrix = pose.transform.matrix;
           }
