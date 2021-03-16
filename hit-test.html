@@ -74,6 +74,25 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       reticle.visible = false;
       scene.addNode(reticle);
 
+      let loader = new THREE.FontLoader();
+      loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+        let geometry = new THREE.TextGeometry( 'Hello three.js!', {
+          font: font,
+          size: 80,
+          height: 5,
+          curveSegments: 12,
+          bevelEnabled: true,
+          bevelThickness: 10,
+          bevelSize: 8,
+          bevelOffset: 0,
+          bevelSegments: 5
+        } );
+          geometry.center();
+          var material = new THREE.MeshNormalMaterial();
+          var mesh = new THREE.Mesh( geometry, material );
+          scene.add(mesh);
+      } );
+
       // Having a really simple drop shadow underneath an object helps ground
       // it in the world without adding much complexity.
       let shadow = new DropShadowNode();
