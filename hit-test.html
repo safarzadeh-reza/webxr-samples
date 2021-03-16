@@ -162,9 +162,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         let newFlower = arObject.clone();
         newFlower.visible = true;
         newFlower.matrix = matrix;
-        console.log("matrix",matrix);
         scene.addNode(newFlower);
-
         flowers.push(newFlower);
 
         // For performance reasons if we add too many objects start
@@ -191,7 +189,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       function onXRFrame(t, frame) {
         let session = frame.session;
         let pose = frame.getViewerPose(xrRefSpace);
-
+        console.log(pose)
         reticle.visible = false;
 
         // If we have a hit test source, get its results for the frame
